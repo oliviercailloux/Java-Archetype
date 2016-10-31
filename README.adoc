@@ -1,0 +1,13 @@
+= java-se-1.8-archetype
+
+A maven https://maven.apache.org/guides/introduction/introduction-to-archetypes.html[archetype] for quickly starting Java SE 1.8 projects.
+
+Projects created from this archetype have the following characteristics.
+
+* The pom has latest versions of:
+** https://github.com/google/guava[Guava]
+** http://www.slf4j.org/[SLF4J] with http://logback.qos.ch/[Logback].
+* The project contains:
+** a starter https://github.com/oliviercailloux/java-se-1.8-archetype/blob/master/src/main/resources/archetype-resources/src/main/java/App.java[class] with a main
+** a configuration https://github.com/oliviercailloux/java-se-1.8-archetype/blob/master/src/main/resources/archetype-resources/src/main/resources/logback.xml[file] for Logback
+** a https://github.com/oliviercailloux/java-se-1.8-archetype/blob/master/src/main/resources/archetype-resources/.gitignore[.gitignore] file.
