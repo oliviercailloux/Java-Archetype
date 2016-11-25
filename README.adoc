@@ -2,7 +2,34 @@
 
 A maven https://maven.apache.org/guides/introduction/introduction-to-archetypes.html[archetype] for quickly starting Java SE 1.8 projects.
 
-Projects created from this archetype have the following characteristics.
+== Usage
+
+* Type `mvn archetype:generate -Dfilter=cailloux:`.
+* Select this artifact (`io.github.oliviercailloux:java-se-1.8-archetype`) from the resulting list.
+* Enter your desired `groupId` and `artifactId`, press enter to accept the suggested package name, enter to confirm.
+** You have to change the suggested package name if the default one has invalid characters, such as hyphens!
+* Your project gets created in a subfolder of your current position, named from your `artifactId`.
+
+=== Other usages
+
+* `mvn archetype:generate -DarchetypeGroupId=io.github.oliviercailloux -DarchetypeArtifactId=java-se-1.8-archetype` directly selects the right archetype.
+* `mvn archetype:generate -DarchetypeGroupId=io.github.oliviercailloux -DarchetypeArtifactId=java-se-1.8-archetype -DgroupId=mygroupid -DartifactId=myartifactid` also indicates the desired group and artifact ids.
+** Unfortunately, using `-DinteractiveMode=false` for full automation does not work: the package directory becomes (literally) `${groupId}`. If you know how to solve this, please let me know.
+* ``uuid=\`cat /proc/sys/kernel/random/uuid` ; mvn archetype:generate -DarchetypeGroupId=io.github.oliviercailloux -DarchetypeArtifactId=java-se-1.8-archetype -DgroupId=mygroupid -DartifactId=artifact_${uuid:0:3}`` in Bash, creates an artifact with a partly random id.
+
+=== From Eclipse Neon
+
+* `File` / `New` / `Maven Project` / select `Nexus Indexer` as a catalog, type `cailloux` in the filter box. Select this archetype.
+* On my install nothing appeared under `Nexus Indexer`, by default. I had to open the `Maven Repositories` view, then under `Global Repositories`, right-click `central`, choose `Rebuild index` (leaving `Minimum Index Enabled` checked).
+** See the m2eclipse https://books.sonatype.com/m2eclipse-book/reference/repository-sect-repo-view.html[book].
+** Indexing takes a /long/ time. (5 min using a fast computer, 56 min using an older computer.)
+** The indexing process may seem to hang, because Eclipse progress indicator gets stuck at 0%. And the Maven console within Eclipse only says when indexing starts and when it ends. It is working however. The index gets built (according to my observations) in `~/.m2/repository/.cache/m2e/1.7.0/`. On my older computer, nothing seemed to happen for 11 minutes, then suddenly a 293 MB `nexus-maven-repository-index.gz` appeared within that folder. Then, nothing again until 48 minutes after start of indexing, where further big files appeared in a `min` subfolder of that folder.
+** Finally, that folder takes 2 GB. According to my observations that folder can be deleted once indexing is finished, with no apparent effect on Eclipse.
+** Populating the list of archetypes (only first time it is triggered after each start of Eclipse) takes > 15 sec on a fast computer, 26 sec on an older computer.
+** You might prefer just giving Eclipse a url to look for remote archetypes (I haven’t tested this method).
+
+== Generated projects
+Projects generated from this archetype have the following characteristics.
 
 * The https://github.com/oliviercailloux/java-se-1.8-archetype/blob/master/src/main/resources/archetype-resources/pom.xml[pom] has latest versions of:
 ** https://github.com/google/guava[Guava]
@@ -11,3 +38,10 @@ Projects created from this archetype have the following characteristics.
 ** a starter https://github.com/oliviercailloux/java-se-1.8-archetype/blob/master/src/main/resources/archetype-resources/src/main/java/App.java[class] with a main
 ** a configuration https://github.com/oliviercailloux/java-se-1.8-archetype/blob/master/src/main/resources/archetype-resources/src/main/resources/logback.xml[file] for Logback
 ** a https://github.com/oliviercailloux/java-se-1.8-archetype/blob/master/src/main/resources/archetype-resources/.gitignore[.gitignore] file.
+
+== How it works
+
+* I published this project to http://search.maven.org/#search|ga|1|g:io.github.oliviercailloux%20a:java-se-1.8-archetype[Maven Central] (source on Maven Central visible https://repo.maven.apache.org/maven2/io/github/oliviercailloux/java-se-1.8-archetype/[here]).
+* A few days later, the http://repo1.maven.org/maven2/archetype-catalog.xml[remote archetypes catalog] indexed it.
+* When starting the https://maven.apache.org/archetype/maven-archetype-plugin/generate-mojo.html[`archetype:generate`] goal, maven uses the `org.apache.maven.plugins:maven-archetype-plugin` plugin, which (by default) searches for archetypes in the remote archetypes catalog (see http://maven.apache.org/archetype/maven-archetype-plugin/specification/archetype-catalog.html[Archetype Catalog]).
+
