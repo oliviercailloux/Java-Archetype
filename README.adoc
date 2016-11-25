@@ -47,3 +47,5 @@ Projects generated from this archetype have the following characteristics.
 * One week later than publication, the Maven Central http://central.maven.org/maven2/.index/[Nexus Indexer] indexed it.
 * The indexing process from Eclipse (see <<from-eclipse-neon,above>>) relies (according to my observation) on that Indexer, hence there might be a delay between availability from maven command line invocation to availability from within Eclipse.
 
+#v2: released 25 nov 23h57.
+

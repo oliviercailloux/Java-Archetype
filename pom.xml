@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.github.oliviercailloux</groupId>
 	<artifactId>java-se-1.8-archetype</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<packaging>maven-archetype</packaging>
 	<name>${project.groupId}:${project.artifactId}</name>
 	<description>A maven archetype for starting Java SE 1.8 projects.</description>
