@@ -1,11 +1,14 @@
 = Nexus Indexer from Eclipse
 
-How to access archetypes using Nexus Indexer from within Eclipse? (Informations valid for Eclipse Neon JavaEE.)
+To access archetypes using Nexus Indexer from within Eclipse, look at `File` / `New` / `Maven Project`, select `Nexus Indexer` as a catalog. On my install nothing appeared under `Nexus Indexer`, by default. Let’s see how to solve this. (Informations valid for Eclipse Neon JavaEE.)
 
 * Open the `Maven Repositories` view, then under `Global Repositories`, right-click `central`, choose `Rebuild index` (leaving `Minimum Index Enabled` checked).
-* See the m2eclipse https://books.sonatype.com/m2eclipse-book/reference/repository-sect-repo-view.html[book].
+** See the m2eclipse https://books.sonatype.com/m2eclipse-book/reference/repository-sect-repo-view.html[book].
 * Indexing takes a _long_ time. (5 min using a fast computer, 28 min using an older computer (56 min, another try).)
-* The indexing process may seem to hang, because Eclipse progress indicator gets stuck at 0%. And the Maven console within Eclipse only says when indexing starts and when it ends. It is working however. The index gets built (according to my observations) in `~/.m2/repository/.cache/m2e/1.7.0/someid`, then part of it gets duplicated into `eclipse workspace/.metadata/.plugins/org.eclipse.m2e.core/nexus/someid`. On my older computer, nothing seemed to happen for 9 minutes (11 minutes another try), then suddenly a 293 MB `nexus-maven-repository-index.gz` appeared within the m2 cache folder. Then, nothing again until 20 minutes (48 minutes) after start of indexing, where further big files appeared in a `min` subfolder of the m2 cache folder. The folder grew over 4 GB, then, 27 minutes (55 minutes) after start, shrank to 2 GB. At that point the biggest file (1.7 GB) from that folder got copied into the Eclipse workspace nexus folder.
+** The indexing process may seem to hang, because Eclipse progress indicator gets stuck at 0%. And the Maven console within Eclipse only says when indexing starts and when it ends. It is working however.
+** The index gets built (according to my observations) in `~/.m2/repository/.cache/m2e/1.7.0/someid`, then part of it gets duplicated into `eclipse workspace/.metadata/.plugins/org.eclipse.m2e.core/nexus/someid`.
+** On my older computer, nothing seemed to happen for 9 minutes (11 minutes another try), then suddenly a 293 MB `nexus-maven-repository-index.gz` appeared within the m2 cache folder. Then, nothing again until 20 minutes (48 minutes) after start of indexing, where further big files appeared in a `min` subfolder of the m2 cache folder. The folder grew over 4 GB, then, 27 minutes (55 minutes) after start, shrank to 2 GB.
+ At that point the biggest file (1.7 GB) from that folder got copied into the Eclipse workspace nexus folder.
 * According to my observations the m2 cache folder can be deleted once indexing is finished, with no apparent effect on Eclipse. (While deleting the Eclipse workspace nexus folder removes the index from Eclipse.)
 * Populating the list of archetypes from the Nexus Indexer (only first time it is triggered after each start of Eclipse) takes 15 sec on a fast computer, 26 sec on an older computer.
 

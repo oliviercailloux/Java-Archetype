@@ -23,8 +23,8 @@ A maven https://maven.apache.org/guides/introduction/introduction-to-archetypes.
 === From Eclipse Neon
 
 * `Window` / `Preferences` / `Maven` / `Archetypes` / `Add Remote Catalog…`, give it the url http://repo1.maven.org/maven2/archetype-catalog.xml, Description: Remote archetypes catalog.
-* `File` / `New` / `Maven Project` / select `Remote archetypes catalog` as a catalog, type `cailloux` in the filter box. (It takes about 15 seconds to appear, on my older computer.) Select this archetype.
-* Instead of using the Maven remote archetypes catalog, you may prefer the `Nexus Indexer`: `File` / `New` / `Maven Project` / select `Nexus Indexer` as a catalog, type `cailloux` in the filter box. Select this archetype.
+* `File` / `New` / `Maven Project`, select `Remote archetypes catalog` as a catalog, type `cailloux` in the filter box. (It takes about 15 seconds to appear, on my older computer.) Select this archetype.
+* Instead of using the Maven remote archetypes catalog, you may prefer the `Nexus Indexer`: `File` / `New` / `Maven Project`, select `Nexus Indexer` as a catalog, type `cailloux` in the filter box. Select this archetype.
 ** On my install nothing appeared under `Nexus Indexer`, by default. Follow link:Nexus%20Indexer%20from%20Eclipse.adoc[this] to solve that problem. (But I recommend rather using the Maven remote archetypes catalog.)
 
 == Generated projects
