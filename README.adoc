@@ -44,5 +44,5 @@ Projects generated from this archetype have the following characteristics.
 * A few days later, the http://repo1.maven.org/maven2/archetype-catalog.xml[remote archetypes catalog] indexed it.
 * When starting the https://maven.apache.org/archetype/maven-archetype-plugin/generate-mojo.html[`archetype:generate`] goal, maven uses the `org.apache.maven.plugins:maven-archetype-plugin` plugin, which (by default) searches for archetypes in the remote archetypes catalog (see http://maven.apache.org/archetype/maven-archetype-plugin/specification/archetype-catalog.html[Archetype Catalog]).
 * One week later than publication, the Maven Central http://central.maven.org/maven2/.index/[Nexus Indexer] indexed it.
-* The indexing process from Eclipse (see <<from-eclipse-neon,above>>) relies (according to my observation) on that Indexer, hence there might be a delay between availability from maven command line invocation to availability from within Eclipse.
+* The indexing process from Eclipse (see <<from-eclipse-neon,above>>) relies (according to my observation) on that Indexer, hence there might be a delay between availability from maven command line invocation and availability from within Eclipse.
 
