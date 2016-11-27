@@ -19,14 +19,16 @@ A maven https://maven.apache.org/guides/introduction/introduction-to-archetypes.
 
 === From Eclipse Neon
 
-* `File` / `New` / `Maven Project` / select `Nexus Indexer` as a catalog, type `cailloux` in the filter box. Select this archetype.
-* On my install nothing appeared under `Nexus Indexer`, by default. I had to open the `Maven Repositories` view, then under `Global Repositories`, right-click `central`, choose `Rebuild index` (leaving `Minimum Index Enabled` checked).
+* `Window` / `Preferences` / `Maven` / `Archetypes` / `Add Remote Catalog…`, give it the url http://repo1.maven.org/maven2/archetype-catalog.xml, Description: Remote archetypes catalog.
+* `File` / `New` / `Maven Project` / select `Remote archetypes catalog` as a catalog, type `cailloux` in the filter box. (It takes about 15 seconds to appear, on my older computer.) Select this archetype.
+* Instead of using the Maven remote archetypes catalog, you may prefer the `Nexus Indexer`. (But I recommend the former approach.) Then, read on.
+** `File` / `New` / `Maven Project` / select `Nexus Indexer` as a catalog, type `cailloux` in the filter box. Select this archetype.
+** On my install nothing appeared under `Nexus Indexer`, by default. I had to open the `Maven Repositories` view, then under `Global Repositories`, right-click `central`, choose `Rebuild index` (leaving `Minimum Index Enabled` checked).
 ** See the m2eclipse https://books.sonatype.com/m2eclipse-book/reference/repository-sect-repo-view.html[book].
-** Indexing takes a _long_ time. (5 min using a fast computer, 56 min using an older computer.)
-** The indexing process may seem to hang, because Eclipse progress indicator gets stuck at 0%. And the Maven console within Eclipse only says when indexing starts and when it ends. It is working however. The index gets built (according to my observations) in `~/.m2/repository/.cache/m2e/1.7.0/`. On my older computer, nothing seemed to happen for 11 minutes, then suddenly a 293 MB `nexus-maven-repository-index.gz` appeared within that folder. Then, nothing again until 48 minutes after start of indexing, where further big files appeared in a `min` subfolder of that folder.
-** Finally, that folder takes 2 GB. According to my observations that folder can be deleted once indexing is finished, with no apparent effect on Eclipse.
-** Populating the list of archetypes (only first time it is triggered after each start of Eclipse) takes > 15 sec on a fast computer, 26 sec on an older computer.
-** You might prefer just giving Eclipse a url to look for remote archetypes (I haven’t tested this method).
+** Indexing takes a _long_ time. (5 min using a fast computer, 28 min using an older computer (56 min, another try).)
+** The indexing process may seem to hang, because Eclipse progress indicator gets stuck at 0%. And the Maven console within Eclipse only says when indexing starts and when it ends. It is working however. The index gets built (according to my observations) in `~/.m2/repository/.cache/m2e/1.7.0/someid`, then part of it gets duplicated into `eclipse workspace/.metadata/.plugins/org.eclipse.m2e.core/nexus/someid`. On my older computer, nothing seemed to happen for 9 minutes (11 minutes another try), then suddenly a 293 MB `nexus-maven-repository-index.gz` appeared within the m2 cache folder. Then, nothing again until 20 minutes (48 minutes) after start of indexing, where further big files appeared in a `min` subfolder of the m2 cache folder. The folder grew over 4 GB, then, 27 minutes (55 minutes) after start, shrank to 2 GB. At that point the biggest file (1.7 GB) from that folder got copied into the Eclipse workspace nexus folder.
+** According to my observations the m2 cache folder can be deleted once indexing is finished, with no apparent effect on Eclipse. (While deleting the Eclipse workspace nexus folder removes the index from Eclipse.)
+** Populating the list of archetypes from the Nexus Indexer (only first time it is triggered after each start of Eclipse) takes 15 sec on a fast computer, 26 sec on an older computer.
 
 == Generated projects
 Projects generated from this archetype have the following characteristics.
@@ -46,6 +48,4 @@ Projects generated from this archetype have the following characteristics.
 * When starting the https://maven.apache.org/archetype/maven-archetype-plugin/generate-mojo.html[`archetype:generate`] goal, maven uses the `org.apache.maven.plugins:maven-archetype-plugin` plugin, which (by default) searches for archetypes in the remote archetypes catalog (see http://maven.apache.org/archetype/maven-archetype-plugin/specification/archetype-catalog.html[Archetype Catalog]).
 * One week later than publication, the Maven Central http://central.maven.org/maven2/.index/[Nexus Indexer] indexed it.
 * The indexing process from Eclipse (see <<from-eclipse-neon,above>>) relies (according to my observation) on that Indexer, hence there might be a delay between availability from maven command line invocation to availability from within Eclipse.
-
-#v2: released 25 nov 23h57.
 
