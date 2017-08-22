@@ -22,12 +22,14 @@ A maven https://maven.apache.org/guides/introduction/introduction-to-archetypes.
 ** Unfortunately, using `-DinteractiveMode=false` for full automation does not work: the package directory becomes (literally) `${groupId}`. If you know how to solve this, please let me know.
 * ``uuid=\`cat /proc/sys/kernel/random/uuid` ; mvn archetype:generate -DarchetypeGroupId=io.github.oliviercailloux -DarchetypeArtifactId=java-se-1.8-archetype -DgroupId=mygroupid -DartifactId=artifact_${uuid:0:3}`` in Bash, creates an artifact with a partly random id.
 
-=== From Eclipse Neon
+=== From Eclipse Oxygen
 
 * `Window` / `Preferences` / `Maven` / `Archetypes` / `Add Remote Catalog…`, give it the url http://repo1.maven.org/maven2/archetype-catalog.xml, Description: Remote archetypes catalog.
-* `File` / `New` / `Maven Project`, select `Remote archetypes catalog` as a catalog, type `cailloux` in the filter box. (It takes about 15 seconds to appear, on my older computer.) Select this archetype.
+* `File` / `New` / `Maven Project`, type `cailloux` in the filter box. (It takes about 15 seconds to appear, on my older computer.) Select this archetype.
 * Instead of using the Maven remote archetypes catalog, you may prefer the `Nexus Indexer`: `File` / `New` / `Maven Project`, select `Nexus Indexer` as a catalog, type `cailloux` in the filter box. Select this archetype.
 ** On my install nothing appeared under `Nexus Indexer`, by default. Follow link:Nexus%20Indexer%20from%20Eclipse.adoc[this] to solve that problem. (But I recommend rather using the Maven remote archetypes catalog.)
+
+(Same instructions apply to Eclipse Neon.)
 
 == Generated projects
 Projects generated from this archetype have the following characteristics.
