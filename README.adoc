@@ -34,7 +34,7 @@ A maven https://maven.apache.org/guides/introduction/introduction-to-archetypes.
 == Generated projects
 Projects generated from this archetype have the following characteristics.
 
-* The https://github.com/oliviercailloux/java-se-1.8-archetype/blob/master/src/main/resources/archetype-resources/pom.xml[pom] has latest versions of:
+* The https://github.com/oliviercailloux/java-se-1.8-archetype/blob/master/src/main/resources/archetype-resources/pom.xml[pom] has recent versions of:
 ** https://github.com/google/guava[Guava]
 ** http://www.slf4j.org/[SLF4J] with http://logback.qos.ch/[Logback].
 * The project contains:
