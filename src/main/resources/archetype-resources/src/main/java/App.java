@@ -15,6 +15,6 @@ public class App {
 	}
 
 	public void proceed() {
-		System.out.println("Hello World!");
+		LOGGER.info("Hello World!");
 	}
 }
