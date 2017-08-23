@@ -10,7 +10,7 @@ public class App {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		new App().proceed();
 	}
 
