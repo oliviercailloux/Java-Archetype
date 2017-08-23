@@ -32,7 +32,6 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<archetype.test.skip>true</archetype.test.skip>
-		<gpg.executable>gpg2</gpg.executable>
 	</properties>
 	<distributionManagement>
 		<snapshotRepository>
