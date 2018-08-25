@@ -18,9 +18,8 @@ A maven https://maven.apache.org/guides/introduction/introduction-to-archetypes.
 === Other usages
 
 * `mvn archetype:generate -DarchetypeGroupId=io.github.oliviercailloux -DarchetypeArtifactId=java-se-1.8-archetype` directly selects the right archetype.
-* `mvn archetype:generate -DarchetypeGroupId=io.github.oliviercailloux -DarchetypeArtifactId=java-se-1.8-archetype -DgroupId=mygroupid -DartifactId=myartifactid` also indicates the desired group and artifact ids.
-** Unfortunately, using `-DinteractiveMode=false` for full automation does not work: the package directory becomes (literally) `${groupId}`. If you know how to solve this, please let me know.
-* ``uuid=\`cat /proc/sys/kernel/random/uuid` ; mvn archetype:generate -DarchetypeGroupId=io.github.oliviercailloux -DarchetypeArtifactId=java-se-1.8-archetype -DgroupId=mygroupid -DartifactId=artifact_${uuid:0:3}`` in Bash, creates an artifact with a partly random id.
+* `mvn archetype:generate -DarchetypeGroupId=io.github.oliviercailloux -DarchetypeArtifactId=java-se-1.8-archetype -DgroupId=mygroupid -DartifactId=myartifactid -DinteractiveMode=false` fully automates the creation of a new project by also indicating the desired group and artifact ids.
+* ``uuid=\`cat /proc/sys/kernel/random/uuid` ; mvn archetype:generate -DarchetypeGroupId=io.github.oliviercailloux -DarchetypeArtifactId=java-se-1.8-archetype -DgroupId=mygroupid -DartifactId=artifact_${uuid:0:3} -DinteractiveMode=false`` in Bash, creates a project with a partly random artifactId.
 
 === From Eclipse Photon
 
