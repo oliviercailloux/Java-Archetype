@@ -21,12 +21,12 @@ A maven https://maven.apache.org/guides/introduction/introduction-to-archetypes.
 * `mvn archetype:generate -DarchetypeGroupId=io.github.oliviercailloux -DarchetypeArtifactId=java-se-1.8-archetype -DgroupId=mygroupid -DartifactId=myartifactid -DinteractiveMode=false` fully automates the creation of a new project by also indicating the desired group and artifact ids.
 * ``uuid=\`cat /proc/sys/kernel/random/uuid` ; mvn archetype:generate -DarchetypeGroupId=io.github.oliviercailloux -DarchetypeArtifactId=java-se-1.8-archetype -DgroupId=mygroupid -DartifactId=artifact_${uuid:0:3} -DinteractiveMode=false`` in Bash, creates a project with a partly random artifactId.
 
-=== From Eclipse Photon
+=== From Eclipse
 
 * `Window` / `Preferences` / `Maven` / `Archetypes` / `Add Remote Catalog…`, give it the url http://repo1.maven.org/maven2/archetype-catalog.xml, Description: Remote archetypes catalog.
 * `File` / `New` / `Maven Project`, type `cailloux` in the filter box. (It takes about 15 seconds to appear, on my older computer.) Select this archetype.
 
-(Same instructions apply to Eclipse Neon and Oxygen.)
+(Tested with Eclipse Neon, Oxygen and Photon.)
 
 === From Eclipse (alternative)
 Instead of using the Maven remote archetypes catalog as indicated above, you may prefer the `Nexus Indexer`: `File` / `New` / `Maven Project`, select `Nexus Indexer` as a catalog, type `cailloux` in the filter box. Select this archetype.
