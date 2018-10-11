@@ -29,6 +29,8 @@ A maven https://maven.apache.org/guides/introduction/introduction-to-archetypes.
 
 (Tested with Eclipse Neon, Oxygen and Photon.)
 
+Eclipse has a https://bugs.eclipse.org/bugs/show_bug.cgi?id=538956[bug] with JUnit 5; if you stumble upon it, add JUnit 4 to the libraries in the project class path from within Eclipse.
+
 === From Eclipse (alternative)
 Instead of using the Maven remote archetypes catalog as indicated above, you may prefer the `Nexus Indexer`: `File` / `New` / `Maven Project`, select `Nexus Indexer` as a catalog, type `cailloux` in the filter box. Select this archetype.
 
