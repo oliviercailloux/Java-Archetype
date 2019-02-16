@@ -3,7 +3,7 @@
 :toc-placement: preamble
 :sectanchors:
 
-image:https://maven-badges.herokuapp.com/maven-central/io.github.oliviercailloux/java-se-1.8-archetype/badge.svg["Artifact on Maven Central", link="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.github.oliviercailloux%22%20a%3A%22java-se-1.8-archetype%22"]
+image:https://travis-ci.com/oliviercailloux/java-se-1.8-archetype.svg?branch=master["Build Status", link="https://travis-ci.com/oliviercailloux/java-se-1.8-archetype"]
 image:https://maven-badges.herokuapp.com/maven-central/io.github.oliviercailloux/java-se-1.8-archetype/badge.svg["Artifact on Maven Central", link="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.github.oliviercailloux%22%20a%3A%22java-se-1.8-archetype%22"]
 
 A maven https://maven.apache.org/guides/introduction/introduction-to-archetypes.html[archetype] for quickly starting Java SE 8 projects.
