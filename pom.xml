@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.github.oliviercailloux</groupId>
 	<artifactId>java-se-1.8-archetype</artifactId>
-	<version>0.0.5-SNAPSHOT</version>
+	<version>0.0.5</version>
 	<packaging>maven-archetype</packaging>
 	<name>Java SE 8 Archetype</name>
 	<description>A maven archetype for starting Java SE 8 projects.</description>
@@ -85,6 +85,18 @@
 			</distributionManagement>
 			<build>
 				<plugins>
+					<plugin>
+						<artifactId>maven-source-plugin</artifactId>
+						<version>3.0.1</version>
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<goals>
+									<goal>jar-no-fork</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
