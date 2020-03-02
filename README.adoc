@@ -1,30 +1,30 @@
-= java-se-1.8-archetype
+= java-archetype
 :toc:
 :toc-placement: preamble
 :sectanchors:
 :groupId: io.github.oliviercailloux
-:artifactId: java-se-1.8-archetype
+:artifactId: java-archetype
 :repository: {artifactId}
 
 image:https://travis-ci.com/oliviercailloux/{repository}.svg?branch=master["Build Status", link="https://travis-ci.com/oliviercailloux/{repository}"]
 image:https://maven-badges.herokuapp.com/maven-central/{groupId}/{artifactId}/badge.svg["Artifact on Maven Central", link="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22{groupId}%22%20a%3A%22{artifactId}%22"]
 
-A maven https://maven.apache.org/guides/introduction/introduction-to-archetypes.html[archetype] for quickly starting Java SE 8 projects.
+A maven https://maven.apache.org/guides/introduction/introduction-to-archetypes.html[archetype] for quickly starting Java projects.
 
 == Usage
 
 * Type `mvn archetype:generate -Dfilter=cailloux:`.
-* Select this artifact (`io.github.oliviercailloux:java-se-1.8-archetype`) from the resulting list.
+* Select this artifact (`io.github.oliviercailloux:java-archetype`) from the resulting list.
 * Enter your desired `groupId` and `artifactId`, press enter to accept the suggested package name, enter to confirm.
 ** You have to change the suggested package name if the default one has invalid characters, such as hyphens!
 * Your project gets created in a subfolder of your current position, named from your `artifactId`.
 
 === Other usages
 
-* `mvn archetype:generate -DarchetypeGroupId=io.github.oliviercailloux -DarchetypeArtifactId=java-se-1.8-archetype` directly selects the right archetype.
-* `mvn archetype:generate -DarchetypeGroupId=io.github.oliviercailloux -DarchetypeArtifactId=java-se-1.8-archetype -DgroupId=mygroupid -DartifactId=myartifactid` also indicates the desired group and artifact ids.
+* `mvn archetype:generate -DarchetypeGroupId=io.github.oliviercailloux -DarchetypeArtifactId=java-archetype` directly selects the right archetype.
+* `mvn archetype:generate -DarchetypeGroupId=io.github.oliviercailloux -DarchetypeArtifactId=java-archetype -DgroupId=mygroupid -DartifactId=myartifactid` also indicates the desired group and artifact ids.
 ** Unfortunately, using `-DinteractiveMode=false` for full automation does not work: the package directory becomes (literally) `${groupId}`. If you know how to solve this, please comment https://issues.apache.org/jira/browse/ARCHETYPE-556[here].
-* ``uuid=\`cat /proc/sys/kernel/random/uuid` ; mvn archetype:generate -DarchetypeGroupId=io.github.oliviercailloux -DarchetypeArtifactId=java-se-1.8-archetype -DgroupId=mygroupid -DartifactId=artifact_${uuid:0:3}`` in Bash, creates an artifact with a partly random id.
+* ``uuid=\`cat /proc/sys/kernel/random/uuid` ; mvn archetype:generate -DarchetypeGroupId=io.github.oliviercailloux -DarchetypeArtifactId=java-archetype -DgroupId=mygroupid -DartifactId=artifact_${uuid:0:3}`` in Bash, creates an artifact with a partly random id.
 
 === From Eclipse
 Eclipse looks at your local archetype catalog. You need to make this archetype appear there.
@@ -46,17 +46,17 @@ Instead of using the Maven local or remote archetypes catalog as indicated above
 == Generated projects
 Projects generated from this archetype have the following characteristics.
 
-* The https://github.com/oliviercailloux/java-se-1.8-archetype/blob/master/src/main/resources/archetype-resources/pom.xml[pom] has recent versions of:
+* The https://github.com/oliviercailloux/java-archetype/blob/master/src/main/resources/archetype-resources/pom.xml[pom] has recent versions of:
 ** https://github.com/google/guava[Guava]
 ** http://www.slf4j.org/[SLF4J] with http://logback.qos.ch/[Logback].
 * The project contains:
-** a starter https://github.com/oliviercailloux/java-se-1.8-archetype/blob/master/src/main/resources/archetype-resources/src/main/java/App.java[class] with a main
-** a configuration https://github.com/oliviercailloux/java-se-1.8-archetype/blob/master/src/main/resources/archetype-resources/src/main/resources/logback.xml[file] for Logback
-** a https://github.com/oliviercailloux/java-se-1.8-archetype/blob/master/src/main/resources/archetype-resources/.gitignore[.gitignore] file.
+** a starter https://github.com/oliviercailloux/java-archetype/blob/master/src/main/resources/archetype-resources/src/main/java/App.java[class] with a main
+** a configuration https://github.com/oliviercailloux/java-archetype/blob/master/src/main/resources/archetype-resources/src/main/resources/logback.xml[file] for Logback
+** a https://github.com/oliviercailloux/java-archetype/blob/master/src/main/resources/archetype-resources/.gitignore[.gitignore] file.
 
 == How it works
 
-* I published this project to http://search.maven.org/#search|ga|1|g:io.github.oliviercailloux%20a:java-se-1.8-archetype[Maven Central] (source on Maven Central visible https://repo.maven.apache.org/maven2/io/github/oliviercailloux/java-se-1.8-archetype/[here]).
+* I published this project to http://search.maven.org/#search|ga|1|g:io.github.oliviercailloux%20a:java-archetype[Maven Central] (source on Maven Central visible https://repo.maven.apache.org/maven2/io/github/oliviercailloux/java-se-1.8-archetype/[here]).
 * A few days later, the http://repo1.maven.org/maven2/archetype-catalog.xml[remote archetypes catalog] indexed it.
 * When starting the https://maven.apache.org/archetype/maven-archetype-plugin/generate-mojo.html[`archetype:generate`] goal, maven uses the `org.apache.maven.plugins:maven-archetype-plugin` plugin, which (by default) searches for archetypes in the remote archetypes catalog (see http://maven.apache.org/archetype/maven-archetype-plugin/specification/archetype-catalog.html[Archetype Catalog]).
 * One week later than publication, the Maven Central http://central.maven.org/maven2/.index/[Nexus Indexer] indexed it. (Thus, there might be a delay between availability from maven command line invocation and availability from within <<from-eclipse-neon,Eclipse>>, depending on the way you access archetypes.)
