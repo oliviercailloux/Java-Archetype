@@ -19,11 +19,13 @@ A maven https://maven.apache.org/guides/introduction/introduction-to-archetypes.
 ** You have to change the suggested package name if the default one has invalid characters, such as hyphens!
 * Your project gets created in a subfolder of your current position, named from your `artifactId`.
 
-=== Other usages
+=== Other usages and notes
 
 * `mvn archetype:generate -DarchetypeGroupId=io.github.oliviercailloux -DarchetypeArtifactId=java-archetype` directly selects the right archetype.
 ** Use `org.apache.maven.plugins:maven-archetype-plugin:3.1.2:generate` instead of `archetype:generate` to use a specific (possibly more recent) version of the https://search.maven.org/artifact/org.apache.maven.plugins/maven-archetype-plugin[`archetype`] plugin
 * `mvn archetype:generate -DarchetypeGroupId=io.github.oliviercailloux -DarchetypeArtifactId=java-archetype -DgroupId=mygroupid -DartifactId=myartifactid -DinteractiveMode=false` also indicates the desired group and artifact ids and remove the prompts.
+
+Do not use a groupId or artifactId that are invalid as package names. Due to a https://issues.apache.org/jira/browse/ARCHETYPE-490[bug] in Maven archetypes, it seems difficult to support this use case. Please consider up-voting the bug, or commenting if you know anything relevant.
 
 === From Eclipse
 Eclipse looks at your local archetype catalog. You need to make this archetype appear there.
@@ -48,6 +50,7 @@ Projects generated from this archetype have the following characteristics.
 ** http://www.slf4j.org/[SLF4J] with http://logback.qos.ch/[Logback].
 * The project contains:
 ** a starter https://github.com/oliviercailloux/java-archetype/blob/master/src/main/resources/archetype-resources/src/main/java/App.java[class] with a main
+** a JUnit test https://github.com/oliviercailloux/java-archetype/blob/master/src/main/resources/archetype-resources/src/test/java/MyTests.java[case]
 ** a configuration https://github.com/oliviercailloux/java-archetype/blob/master/src/main/resources/archetype-resources/src/main/resources/logback.xml[file] for Logback
 ** a https://github.com/oliviercailloux/java-archetype/blob/master/src/main/resources/archetype-resources/.gitignore[.gitignore] file.
 
