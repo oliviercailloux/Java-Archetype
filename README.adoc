@@ -19,7 +19,7 @@ A maven https://maven.apache.org/guides/introduction/introduction-to-archetypes.
 ** You have to change the suggested package name if the default one has invalid characters, such as hyphens! (Due to a https://issues.apache.org/jira/browse/ARCHETYPE-490[bug] in Maven archetypes, it seems difficult to support this use case. Please consider up-voting the bug, or commenting if you know anything relevant.)
 * Your project gets created in a subfolder of your current position, named from your `artifactId`.
 
-=== Other usages and notes
+=== Other usages
 
 * `mvn archetype:generate -DarchetypeGroupId=io.github.oliviercailloux -DarchetypeArtifactId=java-archetype` directly selects the right archetype.
 ** Use `org.apache.maven.plugins:maven-archetype-plugin:3.1.2:generate` instead of `archetype:generate` to use a specific (possibly more recent) version of the https://search.maven.org/artifact/org.apache.maven.plugins/maven-archetype-plugin[`archetype`] plugin
