@@ -23,9 +23,7 @@ A maven https://maven.apache.org/guides/introduction/introduction-to-archetypes.
 
 * `mvn archetype:generate -DarchetypeGroupId=io.github.oliviercailloux -DarchetypeArtifactId=java-archetype` directly selects the right archetype.
 ** Use `org.apache.maven.plugins:maven-archetype-plugin:3.1.2:generate` instead of `archetype:generate` to use a specific (possibly more recent) version of the https://search.maven.org/artifact/org.apache.maven.plugins/maven-archetype-plugin[`archetype`] plugin
-* `mvn archetype:generate -DarchetypeGroupId=io.github.oliviercailloux -DarchetypeArtifactId=java-archetype -DgroupId=mygroupid -DartifactId=myartifactid` also indicates the desired group and artifact ids.
-** Unfortunately, using `-DinteractiveMode=false` for full automation does not work: the package directory becomes (literally) `${groupId}`. If you know how to solve this, please comment https://issues.apache.org/jira/browse/ARCHETYPE-556[here].
-* ``uuid=\`cat /proc/sys/kernel/random/uuid` ; mvn archetype:generate -DarchetypeGroupId=io.github.oliviercailloux -DarchetypeArtifactId=java-archetype -DgroupId=mygroupid -DartifactId=artifact_${uuid:0:3}`` in Bash, creates an artifact with a partly random id.
+* `mvn archetype:generate -DarchetypeGroupId=io.github.oliviercailloux -DarchetypeArtifactId=java-archetype -DgroupId=mygroupid -DartifactId=myartifactid -DinteractiveMode=false` also indicates the desired group and artifact ids and remove the prompts.
 
 === From Eclipse
 Eclipse looks at your local archetype catalog. You need to make this archetype appear there.
