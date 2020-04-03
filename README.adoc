@@ -34,8 +34,6 @@ Eclipse looks at your local archetype catalog. You need to make this archetype a
 * `mvn archetype:crawl -Dcatalog=/home/username/.m2/archetype-catalog.xml` asks Maven to create (or update) your local archetype catalog (http://maven.40175.n5.nabble.com/archetype-catalog-xml-location-archetype-crawl-versus-archetype-generate-td113741.html[more] https://issues.apache.org/jira/browse/ARCHETYPE-142[info]).
 * In Eclipse: `File` / `New` / `Maven Project`, select this archetype.
 
-Eclipse has a https://bugs.eclipse.org/bugs/show_bug.cgi?id=538956[bug] with JUnit 5; if you stumble upon it, add JUnit 4 to the libraries in the project class path from within Eclipse.
-
 === From Eclipse (alternatives)
 The following procedure uses the remote archetype catalog instead of the local one. The drawback is that it takes about 15 seconds each time you want to use this archetype, as Eclipse downloads the (huge) remote archetype catalog again each time. (Tested with Eclipse Neon, Oxygen and Photon.)
 
