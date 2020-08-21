@@ -61,9 +61,9 @@ Projects generated from this archetype have the following characteristics.
 
 == Alternatives
 === The official quickstart archetype
-The official archetype for simple Java projects is https://maven.apache.org/archetypes/maven-archetype-quickstart[`maven-archetype-quickstart`]. Its full name is `org.apache.maven.archetypes:maven-archetype-quickstart`. It is mentioned, for example, by the https://subscription.packtpub.com/book/web_development/9781785286124/1/ch01lvl1sec14/Creating-a-simple-project-with-Maven[Apache Maven Cookbook].
+The official archetype for simple Java projects is https://maven.apache.org/archetypes/maven-archetype-quickstart[`maven-archetype-quickstart`]. Its full name is `org.apache.maven.archetypes:maven-archetype-quickstart`. It is mentioned by Apache’s http://maven.apache.org/guides/getting-started/index.html#how-do-i-make-my-first-maven-project[Maven Getting Started Guide] and by the https://subscription.packtpub.com/book/web_development/9781785286124/1/ch01lvl1sec14/Creating-a-simple-project-with-Maven[Apache Maven Cookbook].
 
-It should, IMHO, be considered deprecated. It suffers several weaknesses.
+It should, IMHO, be considered deprecated, as it suffers several weaknesses.
 
 * An important problem is that it creates projects https://github.com/apache/maven-archetypes/blob/maven-archetype-bundles-1.4/maven-archetype-quickstart/src/main/resources-filtered/archetype-resources/pom.xml#L21-L28[that depend on JUnit 4]. The current version, https://junit.org/junit5/[JUnit 5], differs significantly, providing among other an improved API.
 * Minor weaknesses: its default version is 1.0-SNAPSHOT, which should be 1.0.0-SNAPSHOT to follow the recommended and usual scheme.
