@@ -28,7 +28,7 @@
 	<scm>
 		<connection>scm:git:git://github.com/oliviercailloux/java-archetype.git</connection>
 		<developerConnection>scm:git:ssh://github.com/oliviercailloux/java-archetype.git</developerConnection>
-		<url>http://github.com/oliviercailloux/java-archetype/tree/master</url>
+		<url>https://github.com/oliviercailloux/java-archetype</url>
 	</scm>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
