@@ -1,4 +1,4 @@
-= java-archetype
+= Java Archetype
 :toc:
 :toc-placement: preamble
 :sectanchors:
@@ -58,4 +58,44 @@ Projects generated from this archetype have the following characteristics.
 * A few days later, the https://repo1.maven.org/maven2/archetype-catalog.xml[remote archetypes catalog] indexed it.
 * When starting the https://maven.apache.org/archetype/maven-archetype-plugin/generate-mojo.html[`archetype:generate`] goal, maven uses the `org.apache.maven.plugins:maven-archetype-plugin` plugin, which (by default) searches for archetypes in the remote archetypes catalog (see http://maven.apache.org/archetype/maven-archetype-plugin/specification/archetype-catalog.html[Archetype Catalog]).
 * One week later than publication, the Maven http://maven.apache.org/repository/central-index.html[Central Index] was updated. (Thus, there might be a delay between availability from maven command line invocation and availability from within <<from-eclipse-neon,Eclipse>>, depending on the way you access archetypes.)
+
+== Alternatives
+=== The official quickstart archetype
+The official archetype for simple Java projects is https://maven.apache.org/archetypes/maven-archetype-quickstart[`maven-archetype-quickstart`]. Its full name is `org.apache.maven.archetypes:maven-archetype-quickstart`. It is mentioned, for example, by the https://subscription.packtpub.com/book/web_development/9781785286124/1/ch01lvl1sec14/Creating-a-simple-project-with-Maven[Apache Maven Cookbook].
+
+It should, IMHO, be considered deprecated. It suffers several weaknesses.
+
+* An important problem is that it creates projects https://github.com/apache/maven-archetypes/blob/maven-archetype-bundles-1.4/maven-archetype-quickstart/src/main/resources-filtered/archetype-resources/pom.xml#L21-L28[that depend on JUnit 4]. The current version, https://junit.org/junit5/[JUnit 5], differs significantly, providing among other an improved API.
+* Minor weaknesses: its default version is 1.0-SNAPSHOT, which should be 1.0.0-SNAPSHOT to follow the recommended and usual scheme.
+* It creates projects https://github.com/apache/maven-archetypes/blob/maven-archetype-bundles-1.4/maven-archetype-quickstart/src/main/resources-filtered/archetype-resources/pom.xml#L17-L18[configured for a 1.7 JVM]. This may be appropriate if you particularly need to support old installs, but opting for a reasonably recent JVM is a more reasonable default rule for new projects. For example, Java 8 https://www.oracle.com/java/technologies/javase/8-whats-new.html[introduced] lambda expressions, which you probably do not want to miss out.
+
+My archetype also provides logging by default, which every project should use as it is useful, scales better and does not hurt, and Guava, which usefully enriches Java.
+
+=== Other quickstart archetypes in Maven Central
+In order to join efforts if possible and avoid wasteful duplication, I actively searched for other archetypes that would have the same aim as this one: provide a simple archetype with reasonable defaults for easily start a modern Java project. (This was mostly done around June 2020.)
+
+A general search on the internet https://stackoverflow.com/a/49399420[led me] to https://thepracticaldeveloper.com/archetypes/[The Practical Developer]. When contacted, he wrote to me (by e-mail) that he does not work on https://github.com/thepracticaldeveloper/archetype-java-basic[his archetype] regularly and therefore preferred to decline collaborating on such a project.
+
+As searches on the net did not reveal other useful results, and as I found no specialised search tool suitable for my needs, I implemented a simple https://github.com/oliviercailloux/archetypes-browser[archetype browser]. It lists all the archetypes available in Maven Central. There are far too many to review manually, thus, I selected those whose groupId and artifactId existed since at least three years and have been updated during the last year, in hope of finding projects that are maintained on the long run, which I suppose indicates more probably a good quality project. (Of course this filter may have missed good quality archetypes that perfectly match the stated goal; I have no way to know. As a case in point, this very archetype does not pass that filter as I have changed its artifactId over time.)
+
+I then filtered manually the https://github.com/oliviercailloux/archetypes-browser/raw/master/Archetypes%20grouped.ods[resulting list] on the basis of the archetypes descriptions found in their POM, and gave a further look (on the official website, typically) for a few promising archetypes among them. Only https://github.com/ngeor/archetype-quickstart-jdk8[`com.github.ngeor
+:archetype-quickstart-jdk8`] revealed to be a suitable candidate. But its author https://github.com/ngeor/archetype-quickstart-jdk8/issues/17#issuecomment-663838745[wrote to me] that he is “not really using/maintaing the archetype much these days”.
+
+Please https://github.com/oliviercailloux/java-archetype/issues[open an issue] if you know other archetypes that aim at fulfilling a similar goal as this one.
+
+== Clean POM
+I value clean configuration files, and this archetype provides a clean POM. By this, I mean that I value having as few configuration entries (or lines in my POM) as possible. This is important because the POM, as a fundamental description of your project, may be a cause of subtle problems if it contains some incorrect entry; and such mistakes are much easier to notice when the file is very short. 
+
+This is one reason for not following the (usually recommended) advice of defining the versions of all plugins that a project uses. (Another reason is spelled out below.) A counter-argument may be that such configuration lines can be moved away, for example in a parent POM, but this does not solve the problem of added complexity; you still have as many (or more) total configuration entries in your project, only, with some of them hidden. Also, I do not define version properties, I rather keep the version where the dependency itself is declared, unless the property is required to avoid redundancy (see also https://github.com/ngeor/archetype-quickstart-jdk8/issues/17[this discussion]).
+
+=== About specifying versions
+Here is a bit more rationale about my adoption of a “loose plugin dependency” strategy. By this, I mean that I do not specify precisely the versions of all plugins that I use. It is opposed to the “tight plugin dependency” strategy (example https://github.com/apache/maven-archetypes/blob/maven-archetype-bundles-1.4/maven-archetype-quickstart/src/main/resources-filtered/archetype-resources/pom.xml#L31-L73[here]). 
+In general, the rationale of the tight dependency strategy is as follows: you tested your software with component C at version X; therefore, you declare that your software depends exactly on version X of component C, rather than declaring simply that it depends on (any sufficiently recent version of) component C.
+
+The “tight dependency” strategy is usually recommended in order to avoid falling under a bug of a later version. Indeed, this is an advantage. But I consider that this strategy should remain an exception rather than the norm. We ought to write software that relies on components described by general specifications, meaning, software that will work under future (or simply different) implementations of those specifications. We should not be content with guaranteeing only that our software works under this and that specific environment and version. Thus, we ought to write software that works with, for example, any future version of the `maven-resources-plugin`, not just one that works with version 2.6 of that plugin. Or, software that will work under future versions of the JVM. Or of Windows. The tight dependency strategy leads to extreme waste of resources, as it obliges end-users to have multiple versions of components available when their installed softwares require different versions of a single component. It also goes against the very spirit of program design by specification: future versions may improve performances or correct bugs, and specifying tight dependencies prevent your software from automatically benefitting from such improvements. 
+
+I admit that the industry tends, more and more, to apply the tight dependency strategy rather than the loose dependency strategy. I believe that this is an instance of a tragedy of the commons: it is better for the enterprise, locally, to specify dependencies tightly as it reduces the validity claims of its production; but it is worst for the ecosystem in general when actors behave in such a way. 
+
+To summarize, I believe that applying a loose dependency strategy produces higher quality software, and is doing the right thing for users and good use of resources. (Reasonable exceptions must be tolerated, of course, as always with such rules of thumb.)
+
 
