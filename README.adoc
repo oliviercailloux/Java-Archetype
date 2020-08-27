@@ -9,7 +9,7 @@
 image:https://travis-ci.com/oliviercailloux/{repository}.svg?branch=master["Build Status", link="https://travis-ci.com/oliviercailloux/{repository}"]
 image:https://maven-badges.herokuapp.com/maven-central/{groupId}/{artifactId}/badge.svg["Artifact on Maven Central", link="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22{groupId}%22%20a%3A%22{artifactId}%22"]
 
-A maven https://maven.apache.org/guides/introduction/introduction-to-archetypes.html[archetype] for quickly starting Java projects.
+A simple maven https://maven.apache.org/guides/introduction/introduction-to-archetypes.html[archetype] with reasonable defaults for quickly starting modern Java projects.
 
 == Usage
 
@@ -61,18 +61,18 @@ Projects generated from this archetype have the following characteristics.
 
 == Alternatives
 === The official quickstart archetype
-The official archetype for simple Java projects is https://maven.apache.org/archetypes/maven-archetype-quickstart[`maven-archetype-quickstart`]. Its full name is `org.apache.maven.archetypes:maven-archetype-quickstart`. It is mentioned by Apache’s http://maven.apache.org/guides/getting-started/index.html#how-do-i-make-my-first-maven-project[Maven Getting Started Guide] and by the https://subscription.packtpub.com/book/web_development/9781785286124/1/ch01lvl1sec14/Creating-a-simple-project-with-Maven[Apache Maven Cookbook].
+The official archetype (mentioned by Apache’s http://maven.apache.org/guides/getting-started/index.html#how-do-i-make-my-first-maven-project[Maven Getting Started Guide] and by the https://subscription.packtpub.com/book/web_development/9781785286124/1/ch01lvl1sec14/Creating-a-simple-project-with-Maven[Apache Maven Cookbook]) for simple Java projects is https://maven.apache.org/archetypes/maven-archetype-quickstart[`maven-archetype-quickstart`], or `org.apache.maven.archetypes:maven-archetype-quickstart` in full.
 
 It should, IMHO, be considered deprecated, as it suffers several weaknesses.
 
 * An important problem is that it creates projects https://github.com/apache/maven-archetypes/blob/maven-archetype-bundles-1.4/maven-archetype-quickstart/src/main/resources-filtered/archetype-resources/pom.xml#L21-L28[that depend on JUnit 4]. The current version, https://junit.org/junit5/[JUnit 5], differs significantly, providing among other an improved API.
 * Minor weaknesses: its default version is 1.0-SNAPSHOT, which should be 1.0.0-SNAPSHOT to follow the recommended and usual scheme.
-* It creates projects https://github.com/apache/maven-archetypes/blob/maven-archetype-bundles-1.4/maven-archetype-quickstart/src/main/resources-filtered/archetype-resources/pom.xml#L17-L18[configured for a 1.7 JVM]. This may be appropriate if you particularly need to support old installs, but opting for a reasonably recent JVM is a more reasonable default rule for new projects. For example, Java 8 https://www.oracle.com/java/technologies/javase/8-whats-new.html[introduced] lambda expressions, which you probably do not want to miss out.
+* Another minor weakness: it creates projects https://github.com/apache/maven-archetypes/blob/maven-archetype-bundles-1.4/maven-archetype-quickstart/src/main/resources-filtered/archetype-resources/pom.xml#L17-L18[configured for a 1.7 JVM]. This may be appropriate if you particularly need to support old installs, but opting for a reasonably recent JVM is a more reasonable default rule for new projects. For example, Java 8 https://www.oracle.com/java/technologies/javase/8-whats-new.html[introduced] lambda expressions, which you probably do not want to miss out.
 
-My archetype also provides logging by default, which every project should use as it is useful, scales better and does not hurt, and Guava, which usefully enriches Java.
+My archetype also provides logging by default, which I think is useful, scales better than sysout and does not hurt, and Guava, which usefully enriches Java.
 
 === Other quickstart archetypes in Maven Central
-In order to join efforts if possible and avoid wasteful duplication, I actively searched for other archetypes that would have the same aim as this one: provide a simple archetype with reasonable defaults for easily start a modern Java project. (This was mostly done around June 2020.)
+In order to join efforts if possible and avoid wasteful duplication, I actively searched for other archetypes that would have the same aim as this one: provide a simple archetype with reasonable defaults to easily start a modern Java project. (This was mostly done around June 2020.)
 
 A general search on the internet https://stackoverflow.com/a/49399420[led me] to https://thepracticaldeveloper.com/archetypes/[The Practical Developer]. When contacted, he wrote to me (by e-mail) that he does not work on https://github.com/thepracticaldeveloper/archetype-java-basic[his archetype] regularly and therefore preferred to decline collaborating on such a project.
 
