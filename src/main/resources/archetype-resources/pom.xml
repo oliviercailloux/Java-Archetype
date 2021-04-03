@@ -20,6 +20,14 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.22.2</version>
 			</plugin>
+			<!-- We require a recent version of this plugin because the maven.compiler.release property is understood only 
+				since 3.6 (see maven.apache.org/plugins/maven-compiler-plugin/compile-mojo.html#release), whereas the 
+				version 3.1 is currently provided by default (see maven.apache.org/ref/3.6.3/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging 
+				or https://maven.apache.org/ref/3-LATEST/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging) -->
+			 <plugin>
+			 	<artifactId>maven-compiler-plugin</artifactId>
+			 	<version>3.8.1</version>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -32,7 +40,7 @@
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>29.0-jre</version>
+			<version>30.0-jre</version>
 		</dependency>
 
 		<dependency>
@@ -46,9 +54,8 @@
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.6.1</version>
+			<version>5.7.0</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
 </project>
-
