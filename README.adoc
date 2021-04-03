@@ -100,5 +100,6 @@ To summarize, I believe that applying a loose dependency strategy produces highe
 == References
 * https://www.overops.com/blog/the-top-100-java-libraries-in-2016-after-analyzing-47251-dependencies/[The most popular Java libraries used by GitHub’s most popular projects (2016)]
 * https://mvnrepository.com/popular[Popularity ranking by MvnRepository]
+
 (The reason I included Guava, JUnit and SLF4J in this archetype is because I personally think that these libraries are must-have in most projects, but it is good to see that popularity arguments go in the same direction.)
 
