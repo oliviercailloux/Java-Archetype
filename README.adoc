@@ -20,8 +20,8 @@ A simple maven https://maven.apache.org/guides/introduction/introduction-to-arch
 
 === Other usages
 
-* Use `org.apache.maven.plugins:maven-archetype-plugin:3.1.2:generate` instead of `archetype:generate` to use a specific (possibly more recent) version of the https://search.maven.org/artifact/org.apache.maven.plugins/maven-archetype-plugin[`archetype`] plugin
-* `mvn archetype:generate -DarchetypeGroupId=io.github.oliviercailloux -DarchetypeArtifactId=java-archetype -DgroupId=mygroupid -DartifactId=myartifactid -DinteractiveMode=false` also indicates the desired group and artifact ids and remove the prompts.
+* Use `org.apache.maven.plugins:maven-archetype-plugin:3.2.1:generate` instead of `archetype:generate` to use a specific (possibly more recent) version of the https://search.maven.org/artifact/org.apache.maven.plugins/maven-archetype-plugin[`archetype`] plugin
+* `mvn archetype:generate -DarchetypeGroupId=io.github.oliviercailloux -DarchetypeArtifactId=java-archetype -DinteractiveMode=false -DgroupId=mygroupid -DartifactId=myartifactid` also indicates the desired group and artifact ids and remove the prompts.
 
 === From Eclipse
 Eclipse looks at your local archetype catalog. You need to make this archetype appear there.
@@ -55,7 +55,7 @@ Projects generated from this archetype have the following characteristics.
 
 * I published this project to http://search.maven.org/#search|ga|1|g:io.github.oliviercailloux%20a:java-archetype[Maven Central] (source on Maven Central visible https://repo.maven.apache.org/maven2/io/github/oliviercailloux/java-archetype/[here]).
 * A few days later, the https://repo1.maven.org/maven2/archetype-catalog.xml[remote archetypes catalog] indexed it.
-* When starting the https://maven.apache.org/archetype/maven-archetype-plugin/generate-mojo.html[`archetype:generate`] goal, maven uses the `org.apache.maven.plugins:maven-archetype-plugin` plugin, which (by default) searches for archetypes in the remote archetypes catalog (see http://maven.apache.org/archetype/maven-archetype-plugin/specification/archetype-catalog.html[Archetype Catalog]; you can also try `mvn org.apache.maven.plugins:maven-archetype-plugin:3.1.2:generate -DarchetypeCatalog=local` or `mvn org.apache.maven.plugins:maven-archetype-plugin:3.1.2:generate -DarchetypeCatalog=internal` for comparison).
+* When starting the https://maven.apache.org/archetype/maven-archetype-plugin/generate-mojo.html[`archetype:generate`] goal, maven uses the `org.apache.maven.plugins:maven-archetype-plugin` plugin, which (by default) searches for archetypes in the remote archetypes catalog (see http://maven.apache.org/archetype/maven-archetype-plugin/specification/archetype-catalog.html[Archetype Catalog]; you can also try `mvn org.apache.maven.plugins:maven-archetype-plugin:3.2.1:generate -DarchetypeCatalog=local` or `mvn org.apache.maven.plugins:maven-archetype-plugin:3.2.1:generate -DarchetypeCatalog=internal` for comparison).
 * One week later than publication, the Maven http://maven.apache.org/repository/central-index.html[Central Index] was updated. (Thus, there might be a delay between availability from maven command line invocation and availability within https://github.com/oliviercailloux/Java-Archetype#from-eclipse[Eclipse], depending on the way you access archetypes.)
 
 == Alternatives
