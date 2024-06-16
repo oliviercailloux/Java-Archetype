@@ -17,17 +17,16 @@
       <!-- JUnit 5 requires Surefire version 2.22.0 or higher. By default, Maven LATEST (3.9)
       features version 3.0.0
       (https://maven.apache.org/ref/3-LATEST/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging)
-      but version 3.8 featured 2.12.4 -->
+      but version 3.8 featured 2.12.4. -->
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.22.2</version>
       </plugin>
-      <!-- We require a recent version of this plugin because the maven.compiler.release property is
-      understood only since 3.6 (see
-      maven.apache.org/plugins/maven-compiler-plugin/compile-mojo.html#release), whereas
-      by default Maven LATEST (3.9) features version 3.10
+      <!-- The maven.compiler.release property is understood only since 3.6 (see
+      maven.apache.org/plugins/maven-compiler-plugin/compile-mojo.html#release). By default, Maven LATEST
+      (3.9) features version 3.10
       (https://maven.apache.org/ref/3-LATEST/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging)
-      but version 3.8 featured 3.1 -->
+      but version 3.8 featured 3.1. -->
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.10.1</version>
